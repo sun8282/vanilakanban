@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #3d4e56fa;
+    display: flex;
+    list-style: none;
+  }
+  .none{display: none;}
+  /* button {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 8px;
+    margin: 12px;
+    cursor: move;
+    font-size: 30px;
+    background: #eaeaea4f;
+  } */
+  
+  .container {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b5c1dc57;
+    border-radius: 8px;
+    
+  }
+  .draggable{
+    width: 350px;
+    height: 30px;
+    margin: 10px auto;
+
+    padding: 10px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #eee;
+  }
+  .draggable.dragging {
+    opacity: 0.5;
+  }
