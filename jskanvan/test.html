@@ -8,59 +8,50 @@
     <link rel="stylesheet" href="./test.css">
 </head>
 <body>
-    <div class="addcontainer">
+    <div class="itemcontainer">
+        <div class="addcontainer">
 
-            <input type="text" class="addinput">
-            <div class="btns">
-            <button class="addbtn">add</button>
+                <input type="text" class="addinput">
+                <div class="btns">
+                <button class="addbtn">add</button>
+                </div>
+        </div>
+        <div class="container">
+            <h3> Todo</h3>
+            <button class="additem">add</button>
+            <div class="addbox none">
+                      <input type="text" class="iteminput">
+                      <div class="btns">
+                      <button class="addbtn">add</button>
+                      <span class="close">❌</span>
+                      </div>
             </div>
-    </div>
-    <div class="container">
-        <h3> Todo</h3>
-        <!-- <ul>
+            <li class="draggable" draggable="true">awe</li>
             <li class="draggable" draggable="true">awef</li>
-            <li class="draggable" draggable="true">🦊</li>
-            <li class="draggable" draggable="true">🐸</li>
-        </ul> -->
-        <button class="additem">add</button>
-        <div class="addbox none">
-                  <input type="text" class="iteminput">
-                  <div class="btns">
-                  <button class="addbtn">add</button>
-                  <span class="close">❌</span>
-                  </div>
         </div>
-        <li class="draggable" draggable="true">awe</li>
-        <li class="draggable" draggable="true">awef</li>
+        <div class="container">
+            <h3> Doing</h3>
+            <button class="additem">add</button>
+            <div class="addbox none">
+                      <input type="text" class="iteminput">
+                      <div class="btns">
+                      <button class="addbtn">add</button>
+                      <span class="close">❌</span>
+                      </div>
+            </div>
+        </div>   
+        <div class="container">
+            <h3> Done</h3>
+            <button class="additem">add</button>
+            <div class="addbox none">
+                      <input type="text" class="iteminput">
+                      <div class="btns">
+                      <button class="addbtn">add</button>
+                      <span class="close">❌</span>
+                      </div>
+            </div>
+        </div>   
     </div>
-    <div class="container">
-        <h3> Doing</h3>
-        <ul>
-
-        </ul>
-        <button class="additem">add</button>
-        <div class="addbox none">
-                  <input type="text" class="iteminput">
-                  <div class="btns">
-                  <button class="addbtn">add</button>
-                  <span class="close">❌</span>
-                  </div>
-        </div>
-    </div>   
-    <div class="container">
-        <h3> Done</h3>
-        <ul>
-
-        </ul>
-        <button class="additem">add</button>
-        <div class="addbox none">
-                  <input type="text" class="iteminput">
-                  <div class="btns">
-                  <button class="addbtn">add</button>
-                  <span class="close">❌</span>
-                  </div>
-        </div>
-    </div>   
 </body>
 <script src="./test.js"></script>
 </html>

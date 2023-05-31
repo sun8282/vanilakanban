@@ -16,14 +16,20 @@ body {
     font-size: 30px;
     background: #eaeaea4f;
   } */
-  
+  .itemcontainer{
+    width: 1600px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: auto;
+    white-space: nowrap;
+    /* display: flex; */
+  }
   .container {
     width: 400px;
     margin: 10px;
     padding: 10px;
     background-color: #b5c1dc57;
     border-radius: 8px;
-    
   }
   .draggable{
     width: 350px;
