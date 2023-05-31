@@ -5,6 +5,7 @@ const itembtn = [...document.querySelectorAll(".additem")];
 const addbtn = [...document.querySelectorAll(".addbtn")];
 const addinput = document.querySelector(".addinput");
 const itemcontainer = document.querySelector(".itemcontainer");
+const itempd = document.querySelector(".pd");
 const draggables = document.querySelectorAll(".draggable");
 draggables.forEach((draggable) => {
   draggable.addEventListener("dragstart", () => {
@@ -18,17 +19,17 @@ draggables.forEach((draggable) => {
 containers.forEach((container) => {
   container.addEventListener("dragover", (e) => {
     e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientX);
+    const afterElement = getDragAfterElement(container, e.clientY);
     const draggable = document.querySelector(".dragging");
-    if (afterElement === undefined) {
+    if (afterElement === undefined && draggable !== null) {
       container.appendChild(draggable);
-    } else {
+    } else if(draggable !== null) {
       container.insertBefore(draggable, afterElement);
     }
   });
 });
 
-function getDragAfterElement(container, x) {
+function getDragAfterElement(container, y) {
   const draggableElements = [
     ...container.querySelectorAll(".draggable:not(.dragging)"),
   ];
@@ -36,7 +37,8 @@ function getDragAfterElement(container, x) {
   return draggableElements.reduce(
     (closest, child) => {
       const box = child.getBoundingClientRect();
-      const offset = x - box.left - box.width / 2;
+      const offset = y - box.top - box.height / 2;
+      
       // console.log(offset);
       if (offset < 0 && offset > closest.offset) {
         return { offset: offset, element: child };
@@ -65,7 +67,7 @@ const addcontainer = (value) => {
   </div>
     `;
 
-  itemcontainer.append(item);
+  itempd.append(item);
   const itembtn = [...document.querySelectorAll(".additem")];
   const containers = document.querySelectorAll(".container");
   const closebtn = [...document.querySelectorAll(".close")];
@@ -120,12 +122,20 @@ const additem = (value, el) => {
   //   const prev =
   //     el.previousSibling.previousSibling.previousSibling.previousSibling;
   const item = document.createElement("li");
+
   item.className = "draggable";
   item.setAttribute("draggable", true);
-  item.innerText = value;
+  item.innerHTML = `<span class="itemtext">${value}</span><span class ="edit">✏️</span> <span class="delete">❌</span>`;
+
   el.append(item);
   const draggables = document.querySelectorAll(".draggable");
+  const deleteitem = document.querySelectorAll(".delete");
 
+  deleteitem.forEach(e =>{
+    e.addEventListener("click", el =>{
+      el.target.parentNode.remove();
+    })
+  })
   draggables.forEach((draggable) => {
     draggable.addEventListener("dragstart", () => {
       draggable.classList.add("dragging");

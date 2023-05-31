@@ -1,9 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #3d4e56fa;
+    background-color: #fff;
     display: flex;
     list-style: none;
+    position: relative;
   }
   .none{display: none;}
   /* button {
@@ -17,30 +18,62 @@ body {
     background: #eaeaea4f;
   } */
   .itemcontainer{
-    width: 1600px;
-    height: 600px;
+    width: 80%;
+    /* height: 100vh; */
     margin: 0 auto;
-    overflow: auto;
-    white-space: nowrap;
-    /* display: flex; */
+    position: absolute;
+    top: 100px;
+    right: 0;
+    height: 90vh;
+    overflow-x: scroll;
+
+    
+  }
+  .pd{
+    display: flex;
+    flex-wrap: nowrap;
+    /* white-space: nowrap; */
+
   }
   .container {
     width: 400px;
+    min-width: 400px;
+    /* height: 100px; */
+    flex-shrink: 1;
+    height: max-content;
     margin: 10px;
-    padding: 10px;
+    padding: 20px 10px;
     background-color: #b5c1dc57;
     border-radius: 8px;
   }
   .draggable{
     width: 350px;
-    height: 30px;
+    min-height: 30px;
+    height: max-content;
+    
     margin: 10px auto;
-
-    padding: 10px;
+    position: relative;
+    padding: 10px 20px;
     background: #fff;
     border-radius: 20px;
     border: 1px solid #eee;
   }
+  .itemtext{
+    width: 300px;
+    word-break: break-word;
+  }
   .draggable.dragging {
     opacity: 0.5;
+  }
+  .delete{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    right: 10px;
+  }
+  .edit{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    right: 35px;
   }

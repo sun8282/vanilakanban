@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="./test.css">
 </head>
 <body>
+    <header>
+        
+    </header>
+    <article>
+    <div class="workspaceheader">
+        <h1>Work Space</h1>
+    </div>
     <div class="itemcontainer">
+        <div class="pd">
         <div class="addcontainer">
 
                 <input type="text" class="addinput">
@@ -16,7 +24,7 @@
                 <button class="addbtn">add</button>
                 </div>
         </div>
-        <div class="container">
+        <div class="container" draggable="true">
             <h3> Todo</h3>
             <button class="additem">add</button>
             <div class="addbox none">
@@ -26,10 +34,8 @@
                       <span class="close">❌</span>
                       </div>
             </div>
-            <li class="draggable" draggable="true">awe</li>
-            <li class="draggable" draggable="true">awef</li>
         </div>
-        <div class="container">
+        <div class="container" draggable="true">
             <h3> Doing</h3>
             <button class="additem">add</button>
             <div class="addbox none">
@@ -40,7 +46,7 @@
                       </div>
             </div>
         </div>   
-        <div class="container">
+        <div class="container" draggable="true">
             <h3> Done</h3>
             <button class="additem">add</button>
             <div class="addbox none">
@@ -50,8 +56,10 @@
                       <span class="close">❌</span>
                       </div>
             </div>
-        </div>   
+        </div>
+    </div>   
     </div>
+</article>
 </body>
 <script src="./test.js"></script>
 </html>
