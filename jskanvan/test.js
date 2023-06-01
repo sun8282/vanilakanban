@@ -7,6 +7,7 @@ const addinput = document.querySelector(".addinput");
 const itemcontainer = document.querySelector(".itemcontainer");
 const itempd = document.querySelector(".pd");
 const draggables = document.querySelectorAll(".draggable");
+const article = document.querySelectorAll(".article");
 draggables.forEach((draggable) => {
   draggable.addEventListener("dragstart", () => {
     draggable.classList.add("dragging");
@@ -28,7 +29,28 @@ containers.forEach((container) => {
     }
   });
 });
+article.forEach(e =>{
+  e.addEventListener("dragover", (el) =>{
+    const dragcon = document.querySelector(".draggingcon");
 
+    if(dragcon !== null){
+    const parent = dragcon.parentNode;
+    console.log()
+    parent.append(e.children[0])
+    e.append(dragcon)
+  }
+    // console.log(e.childNodes[1])
+  })
+})
+containers.forEach((draggable) => {
+  draggable.addEventListener("dragstart", () => {
+    draggable.classList.add("draggingcon");
+  });
+
+  draggable.addEventListener("dragend", () => {
+    draggable.classList.remove("draggingcon");
+  });
+});
 function getDragAfterElement(container, y) {
   const draggableElements = [
     ...container.querySelectorAll(".draggable:not(.dragging)"),
@@ -53,9 +75,10 @@ function getDragAfterElement(container, y) {
 const addcontainer = (value) => {
   // if (!add) return;
   const item = document.createElement("div");
-  item.className = "container";
-  item.setAttribute("draggable", true);
+  item.className = "article";
+  // item.setAttribute("draggable", true);
   item.innerHTML = `
+  <div class ="container" draggable="true">
   <h3> ${value}</h3>
   <button class="additem">add</button>
   <div class="addbox none">
@@ -65,6 +88,7 @@ const addcontainer = (value) => {
             <span class="close">❌</span>
             </div>
   </div>
+  </div>
     `;
 
   itempd.append(item);
@@ -73,6 +97,29 @@ const addcontainer = (value) => {
   const closebtn = [...document.querySelectorAll(".close")];
   const addbtn = [...document.querySelectorAll(".addbtn")];
   const addinput = document.querySelector(".addinput");
+  const article = document.querySelectorAll(".article");
+  article.forEach(e =>{
+    e.addEventListener("dragover", (el) =>{
+      const dragcon = document.querySelector(".draggingcon");
+  
+      if(dragcon !== null){
+      const parent = dragcon.parentNode;
+      console.log()
+      parent.append(e.children[0])
+      e.append(dragcon)
+    }
+      // console.log(e.childNodes[1])
+    })
+  })
+  containers.forEach((draggable) => {
+    draggable.addEventListener("dragstart", () => {
+      draggable.classList.add("draggingcon");
+    });
+  
+    draggable.addEventListener("dragend", () => {
+      draggable.classList.remove("draggingcon");
+    });
+  });
   itembtn.forEach((e) => {
     e.addEventListener("click", (el) => {
       console.log(el.target.nextSibling.nextSibling);
@@ -89,14 +136,17 @@ const addcontainer = (value) => {
   containers.forEach((container) => {
     container.addEventListener("dragover", (e) => {
       e.preventDefault();
-      const afterElement = getDragAfterElement(container, e.clientX);
+      const afterElement = getDragAfterElement(container, e.clientY);
       const draggable = document.querySelector(".dragging");
-      if (afterElement === undefined) {
+      console.log(draggable)
+      if (afterElement === undefined && draggable !== null) {
         container.appendChild(draggable);
-      } else {
+      } else if(draggable !== null) {
         container.insertBefore(draggable, afterElement);
       }
     });
+  });
+  
     addbtn.forEach((e) => {
       e.addEventListener("click", (el) => {
         console.log(el.target.parentNode.previousSibling.previousSibling);
@@ -115,7 +165,7 @@ const addcontainer = (value) => {
         }
       });
     });
-  });
+
 };
 const additem = (value, el) => {
   console.log(el);
@@ -140,7 +190,7 @@ const additem = (value, el) => {
     draggable.addEventListener("dragstart", () => {
       draggable.classList.add("dragging");
     });
-
+  
     draggable.addEventListener("dragend", () => {
       draggable.classList.remove("dragging");
     });
