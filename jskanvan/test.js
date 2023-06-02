@@ -32,10 +32,12 @@ containers.forEach((container) => {
 article.forEach(e =>{
   e.addEventListener("dragover", (el) =>{
     const dragcon = document.querySelector(".draggingcon");
+    const dragli = document.querySelector(".dragging");
 
-    if(dragcon !== null){
+    console.log(dragli)
+    if(dragcon !== null && dragli ===null){
     const parent = dragcon.parentNode;
-    console.log()
+
     parent.append(e.children[0])
     e.append(dragcon)
   }
@@ -98,19 +100,21 @@ const addcontainer = (value) => {
   const addbtn = [...document.querySelectorAll(".addbtn")];
   const addinput = document.querySelector(".addinput");
   const article = document.querySelectorAll(".article");
-  article.forEach(e =>{
-    e.addEventListener("dragover", (el) =>{
-      const dragcon = document.querySelector(".draggingcon");
-  
-      if(dragcon !== null){
-      const parent = dragcon.parentNode;
-      console.log()
-      parent.append(e.children[0])
-      e.append(dragcon)
-    }
-      // console.log(e.childNodes[1])
-    })
+ article.forEach(e =>{
+  e.addEventListener("dragover", (el) =>{
+    const dragcon = document.querySelector(".draggingcon");
+    const dragli = document.querySelector(".dragging");
+
+    console.log(dragli)
+    if(dragcon !== null && dragli ===null){
+    const parent = dragcon.parentNode;
+
+    parent.append(e.children[0])
+    e.append(dragcon)
+  }
+    // console.log(e.childNodes[1])
   })
+})
   containers.forEach((draggable) => {
     draggable.addEventListener("dragstart", () => {
       draggable.classList.add("draggingcon");
@@ -175,12 +179,35 @@ const additem = (value, el) => {
 
   item.className = "draggable";
   item.setAttribute("draggable", true);
-  item.innerHTML = `<span class="itemtext">${value}</span><span class ="edit">✏️</span> <span class="delete">❌</span>`;
+  item.innerHTML = `<span class="itemtext">${value}</span><span class ="edit">✏️</span> <span class="delete">🗑</span>`;
 
   el.append(item);
   const draggables = document.querySelectorAll(".draggable");
   const deleteitem = document.querySelectorAll(".delete");
+  const editbtn = document.querySelectorAll(".edit");
+function editmode(element){
+  const parentEl = element.target.parentElement
+  if(parentEl !== null){
+    parentEl.innerHTML = `<span class="itemtext" contenteditable="true">${value}</span><span class ="complate">✔️</span> <span class="editclose">❌</span>`;
+      const complate = document.querySelector(".complate");
+      const editclose = document.querySelector(".editclose");
+      
+      complate.setAttribute("contenteditable", false);
+      editclose.setAttribute("contenteditable", false);
 
+      complate.addEventListener("click", el =>{
+        const elText = el.target.previousSibling
+        console.log(el.target.previousSibling)
+        parentEl.innerHTML = `<span class="itemtext">${elText.innerText}</span><span class ="edit">✏️</span> <span class="delete">🗑</span>`;
+
+      })
+    }
+}
+  editbtn.forEach(e =>{
+    e.addEventListener("click", el=>{
+    editmode(el)
+    })
+  })
   deleteitem.forEach(e =>{
     e.addEventListener("click", el =>{
       el.target.parentNode.remove();
